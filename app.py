@@ -74,7 +74,7 @@ def load_data_to_db(uploaded_file):
 # 4. Sidebar: Inputs & Instructions
 # -----------------------------------------------------------------------------
 with st.sidebar:
-    st.header("📂 Data Upload")
+    st.header("Data Upload")
     
     # Allow multiple CSV uploads
     uploaded_files = st.file_uploader(
@@ -99,7 +99,7 @@ with st.sidebar:
     st.markdown("---")
     
     # Database Schema Viewer
-    st.subheader("🗄️ Database Schema")
+    st.subheader("Database Schema")
     if st.button("Refresh Schema"):
         # Just reruns the script to update the view
         st.rerun()
@@ -124,7 +124,7 @@ with st.sidebar:
         st.error(f"DB Error: {e}")
 
     st.markdown("---")
-    if st.button("🧹 Clear Database"):
+    if st.button("Clear Database"):
         st.session_state.db_conn.close()
         del st.session_state.db_conn
         st.session_state.uploaded_files_list = []
@@ -155,7 +155,7 @@ with col1:
 
 with col2:
     st.markdown("<br><br>", unsafe_allow_html=True) # Spacing
-    run_btn = st.button("▶️ Run Query", type="primary", use_container_width=True)
+    run_btn = st.button("Run Query", type="primary", use_container_width=True)
 
 # -----------------------------------------------------------------------------
 # 6. Results & Visualization
@@ -168,14 +168,14 @@ if run_btn or query:
         st.divider()
         
         # Tabs for Data vs Visualization
-        tab1, tab2 = st.tabs(["📄 Data Results", "📈 Visualization"])
+        tab1, tab2 = st.tabs(["Data Results", "Visualization"])
         
         with tab1:
             st.markdown(f"**Results:** {results_df.shape[0]} rows, {results_df.shape[1]} columns")
             st.dataframe(results_df, use_container_width=True)
             
             # Export Buttons
-            st.markdown("### 📥 Export")
+            st.markdown("### Export")
             c1, c2 = st.columns(2)
             
             with c1:
